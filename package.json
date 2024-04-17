@@ -1,13 +1,13 @@
 {
-  “name”: “my-express-app”,
-  “version”: “1.0.0",
-  “description”: “A simple Express.js app with Axios”,
-  “main”: “index.js”,
-  “scripts”: {
-    “start”: “node index.js”
+  "name": "your-app-name",
+  "version": "1.0.0",
+  "description": "Your app description",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
   },
-  “dependencies”: {
-    “express”: “^4.17.1",
-    “axios”: “^0.24.0"
+  "dependencies": {
+    "express": "^4.17.2",
+    "axios": "^0.24.0"
   }
 }
