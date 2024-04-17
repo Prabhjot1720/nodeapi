@@ -13,13 +13,14 @@ app.post('/fetchToken', async (req, res) => {
   console.log("abracadabra");
   const apiUrl = 'https://api.orange.com/oauth/v3/token';
   const headers = {
-    'Authorization': 'Basic QXU1M3JLeEhSMzRsckNyT251emNDV0RrQVExQXVBdmw6WDJsdTJYYVNhWkhJOUczVw==',
+    'Authorization': 'Bearer QXU1M3JLeEhSMzRsckNyT251emNDV0RrQVExQXVBdmw6WDJsdTJYYVNhWkhJOUczVw==',
     'Content-Type': 'application/x-www-form-urlencoded',
     'Accept': 'application/json',
   };
   const body = new FormData();
   body.append('grant_type', 'client_credentials');
   try {
+    console.log("inside try block")
     const response = await axios.post(apiUrl, body, { headers });
     console.log("this is response",response)
     if (response.status === 200) {
