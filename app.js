@@ -21,6 +21,7 @@ app.post('/fetchToken', async (req, res) => {
   body.append('grant_type', 'client_credentials');
   try {
     const response = await axios.post(apiUrl, body, { headers });
+    console.log("this is response",response)
     if (response.status === 200) {
       console.log('data response:--', response);
       res.status(200).json({ access_token: response.data.access_token });
