@@ -13,7 +13,9 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
-
+app.get('/',(req,res)=>{
+  res.send(<h1>server is Up and running</h1>)
+})
 app.post('/fetchToken', async (req, res) => {
   console.log("abracadabra");
   const apiUrl = 'https://api.orange.com/oauth/v3/token';
