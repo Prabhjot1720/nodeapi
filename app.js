@@ -13,7 +13,7 @@ app.post('/fetchToken', async (req, res) => {
   console.log("abracadabra");
   const apiUrl = 'https://api.orange.com/oauth/v3/token';
   const headers = {
-    'Authorization': 'Bearer QXU1M3JLeEhSMzRsckNyT251emNDV0RrQVExQXVBdmw6WDJsdTJYYVNhWkhJOUczVw==',
+    'Authorization': 'Basic QXU1M3JLeEhSMzRsckNyT251emNDV0RrQVExQXVBdmw6WDJsdTJYYVNhWkhJOUczVw==',
     'Content-Type': 'application/x-www-form-urlencoded',
     'Accept': 'application/json',
   };
