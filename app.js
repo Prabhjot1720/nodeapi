@@ -2,13 +2,16 @@ const express = require("express");
 const axios = require("axios");
 const app = express();
 const PORT = process.env.PORT || 3001;
+
 app.use(express.json());
+
 // Middleware to handle CORS
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
+
 app.post('/fetchToken', async (req, res) => {
   console.log("abracadabra");
   const apiUrl = 'https://api.orange.com/oauth/v3/token';
@@ -17,9 +20,8 @@ app.post('/fetchToken', async (req, res) => {
     'Content-Type': 'application/x-www-form-urlencoded',
     'Accept': 'application/json',
   };
-  //const body = new FormData();
-  //body.append('grant_type', 'client_credentials');
-    const requestData = {
+
+  const requestData = {
     grant_type: 'client_credentials',
   };
 
@@ -44,6 +46,7 @@ app.post('/fetchToken', async (req, res) => {
     res.status(500).json({ error: `Error fetching token: ${error.message}` });
   }
 });
+
 app.post('/makeWebPayment', async (req, res) => {
   const { token, amount } = req.body;
   const apiUrl = 'https://api.orange.com/orange-money-webpay/dev/v1/webpayment';
@@ -52,6 +55,7 @@ app.post('/makeWebPayment', async (req, res) => {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   };
+
   const randomOrderId = `MY_ORDER_ID_${Date.now()}_${Math.floor(Math.random() * 10000000)}`;
   const body = {
     "merchant_key": "a7cca573",
@@ -64,6 +68,7 @@ app.post('/makeWebPayment', async (req, res) => {
     "lang": "fr",
     "reference": "ref Merchant"
   };
+
   try {
     const response = await axios.post(apiUrl, body, { headers });
     if (response.status === 201) {
@@ -75,6 +80,7 @@ app.post('/makeWebPayment', async (req, res) => {
     res.status(500).json({ error: `Error making web payment: ${error.message}` });
   }
 });
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
