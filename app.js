@@ -14,7 +14,7 @@ app.use((req, res, next) => {
   next();
 });
 app.get('/',(req,res)=>{
-  res.send(<h1>server is Up and running</h1>)
+  res.json({status:'Up and running'})
 })
 app.post('/fetchToken', async (req, res) => {
   console.log("abracadabra");
