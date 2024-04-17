@@ -30,7 +30,7 @@ app.post('/fetchToken', async (req, res) => {
 
   try {
     console.log("inside try block")
-    const response = await axios.post(apiUrl, body, { headers });
+    const response = await axios.post(apiUrl, formData, { headers });
     console.log("this is response",response)
     if (response.status === 200) {
       console.log('data response:--', response);
