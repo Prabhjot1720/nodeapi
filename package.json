@@ -2,9 +2,9 @@
   "name": "your-app-name",
   "version": "1.0.0",
   "description": "Your app description",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "^4.17.2",
