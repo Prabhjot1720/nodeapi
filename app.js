@@ -13,12 +13,21 @@ app.post('/fetchToken', async (req, res) => {
   console.log("abracadabra");
   const apiUrl = 'https://api.orange.com/oauth/v3/token';
   const headers = {
-    'Authorization': 'Bearer QXU1M3JLeEhSMzRsckNyT251emNDV0RrQVExQXVBdmw6WDJsdTJYYVNhWkhJOUczVw==',
+    'Authorization': 'basic QXU1M3JLeEhSMzRsckNyT251emNDV0RrQVExQXVBdmw6WDJsdTJYYVNhWkhJOUczVw==',
     'Content-Type': 'application/x-www-form-urlencoded',
     'Accept': 'application/json',
   };
-  const body = new FormData();
-  body.append('grant_type', 'client_credentials');
+  //const body = new FormData();
+  //body.append('grant_type', 'client_credentials');
+    const requestData = {
+    grant_type: 'client_credentials',
+  };
+
+  // Manually create the x-www-form-urlencoded string
+  const formData = Object.keys(requestData)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(requestData[key]))
+    .join('&');
+
   try {
     console.log("inside try block")
     const response = await axios.post(apiUrl, body, { headers });
